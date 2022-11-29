@@ -1,0 +1,5 @@
+sceneSetups:
+- path: Assets/Destroyed_city_FREE/Scenes/destroyed_city.unity
+  isLoaded: 1
+  isActive: 1
+  isSubScene: 0
