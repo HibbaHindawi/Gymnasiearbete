@@ -123,6 +123,30 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: 6eb1c022557926f40b5996dce74238b2, type: 2}
+--- !u!1 &327856641 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5444575603848106781, guid: 1a69bf15f559f5a4b91095febe3fdd1f, type: 3}
+  m_PrefabInstance: {fileID: 5444575604810120812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &327856645 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 5444575603848106783, guid: 1a69bf15f559f5a4b91095febe3fdd1f, type: 3}
+  m_PrefabInstance: {fileID: 5444575604810120812}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &327856646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327856641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a094bcc4c2d729b4bbd573b1a57b3e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 327856645}
+  weaponCamera: {fileID: 327856645}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,11 +241,52 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &735685164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5444575603451618191, guid: 1a69bf15f559f5a4b91095febe3fdd1f, type: 3}
+  m_PrefabInstance: {fileID: 5444575604810120812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1359683049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5444575603451618181, guid: 1a69bf15f559f5a4b91095febe3fdd1f, type: 3}
   m_PrefabInstance: {fileID: 5444575604810120812}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1359683056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735685164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0042c5a296720949be01e40ce19bd9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundSpeed: 11
+  runSpeed: 7
+  grAccel: 45
+  airSpeed: 6
+  airAccel: 45
+  jumpUpSpeed: 9.2
+  dashSpeed: 13
+  wallSpeed: 10
+  wallClimbSpeed: 4
+  wallAccel: 20
+  wallRunTime: 3
+  wallStickiness: 20
+  wallStickDistance: 1
+  wallFloorBarrier: 40
+  wallBanTime: 3
+  canJump: 1
+  canDJump: 1
+  wallBan: 0
+  wrTimer: 0
+  wallStickTimer: 0
+  running: 0
+  jump: 0
+  crouched: 0
+  grounded: 0
 --- !u!1 &1658879096
 GameObject:
   m_ObjectHideFlags: 0
@@ -445,7 +510,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5444575603848106778, guid: 1a69bf15f559f5a4b91095febe3fdd1f, type: 3}
+    - {fileID: 5444575603451618183, guid: 1a69bf15f559f5a4b91095febe3fdd1f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1a69bf15f559f5a4b91095febe3fdd1f, type: 3}
 --- !u!1001 &7116370095961615419
 PrefabInstance:

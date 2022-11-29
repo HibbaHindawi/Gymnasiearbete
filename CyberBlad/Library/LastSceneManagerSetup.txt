@@ -1,5 +1,5 @@
 sceneSetups:
-- path: C:/Users/mrfir/Desktop/improved values/Assets/Scenes/SampleScene.unity
+- path: Assets/Scenes/SampleScene for the movement.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
