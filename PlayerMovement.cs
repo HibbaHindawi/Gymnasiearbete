@@ -1,4 +1,4 @@
-﻿// script written by Johannes and inspired by Dave/GameDevelopment Youtube
+// script written by Johannes and inspired by Dave/GameDevelopment Youtube
 
 using System.Collections;
 using System.Collections.Generic;
@@ -7,41 +7,41 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     //Ground
-    float groundSpeed = 5f;
-    float runSpeed = 7f;
-    float grAccel = 20f;
+    public float groundSpeed = 11f;
+    public float runSpeed = 7f;
+    public float grAccel = 45f;
 
     //Air
-    float airSpeed = 4f;
-    float airAccel = 20f;
+    public float airSpeed = 6f;
+    public float airAccel = 45f;
 
     //Jump
-    float jumpUpSpeed = 9.2f;
-    float dashSpeed = 6f;
+    public float jumpUpSpeed = 9.2f;
+    public float dashSpeed = 13f;
 
     //Wall
-    float wallSpeed = 10f;
-    float wallClimbSpeed = 4f;
-    float wallAccel = 20f;
-    float wallRunTime = 3f;
-    float wallStickiness = 20f;
-    float wallStickDistance = 1f;
-    float wallFloorBarrier = 40f;
-    float wallBanTime = 4f;
+    public float wallSpeed = 10f;
+    public float wallClimbSpeed = 4f;
+    public float wallAccel = 20f;
+    public float wallRunTime = 3f;
+    public float wallStickiness = 20f;
+    public float wallStickDistance = 1f;
+    public float wallFloorBarrier = 40f;
+    public float wallBanTime = 3f;
     Vector3 bannedGroundNormal;
 
     //Cooldowns
-    bool canJump = true;
-    bool canDJump = true;
-    float wallBan = 0f;
-    float wrTimer = 0f;
-    float wallStickTimer = 0f;
+    public bool canJump = true;
+    public bool canDJump = true;
+    public float wallBan = 0f;
+    public float wrTimer = 0f;
+    public float wallStickTimer = 0f;
 
     //States
-    bool running;
-    bool jump;
-    bool crouched;
-    bool grounded;
+    public bool running;
+    public bool jump;
+    public bool crouched;
+    public bool grounded;
 
     Collider ground;
 
@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.V)) rb.AddForce(dir * 20f, ForceMode.VelocityChange);
     }
 
-    void FixedUpdate()
+    public void FixedUpdate()
     {
         if (crouched)
         {
