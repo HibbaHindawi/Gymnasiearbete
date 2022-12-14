@@ -5,20 +5,29 @@ using UnityEngine;
 public class AStarAgent : MonoBehaviour {
 
     public Transform target;
-    float speed = 20;
+    float speed = 10;
     Vector3[] path;
+    
     int targetIndex;
     int rotationSpeed = 3;
+    private Vector3 targetOldPosition;
 
-    void Update() {
-        PathRequestManager.RequestPath(transform.position, target.position, OnPathFound);
+    void Awake() {
+        targetOldPosition = target.position;
     }
 
+    void Update() {
+        if (Vector3.Distance(a: targetOldPosition, b: target.position) > 3) {
+            PathRequestManager.RequestPath(pathStart: transform.position, pathEnd: target.position, callback: OnPathFound);
+            targetOldPosition = target.position;
+        }
+    }
+    
     public void OnPathFound(Vector3[] newPath, bool pathIsSuccessful) {
         if (pathIsSuccessful) {
             path = newPath;
-            StopCoroutine("FollowPath");
-            StartCoroutine("FollowPath");
+            StopCoroutine(methodName: "FollowPath");
+            StartCoroutine(methodName: "FollowPath");
         }
     }
 
@@ -43,10 +52,10 @@ public class AStarAgent : MonoBehaviour {
 
             Vector3 targetDir = currentWaypoint - this.transform.position;
             float step = this.rotationSpeed * Time.deltaTime;
-            Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
-            transform.rotation = Quaternion.LookRotation(newDir);
+            Vector3 newDir = Vector3.RotateTowards(current: transform.forward, target: targetDir, maxRadiansDelta: step, maxMagnitudeDelta: 0.0F);
+            transform.rotation = Quaternion.LookRotation(forward: newDir);
 
-            transform.position = Vector3.MoveTowards(this.transform.position, currentWaypoint, this.speed * Time.deltaTime);           // Moves the transform
+            transform.position = Vector3.MoveTowards(current: this.transform.position, target: currentWaypoint, maxDistanceDelta: this.speed * Time.deltaTime);           // Moves the transform
             yield return null;                                                                              // Move over to net frame (done bc we are in a Coroutin)
 
         }
@@ -56,13 +65,13 @@ public class AStarAgent : MonoBehaviour {
         if (path != null) {
             for (int i = targetIndex; i < path.Length; i++) {
                 Gizmos.color = Color.black;
-                Gizmos.DrawCube(path[i], Vector3.one);
+                Gizmos.DrawCube(center: path[i], size: Vector3.one);
 
                 if (i == targetIndex) {
-                    Gizmos.DrawLine(transform.position, path[i]);
+                    Gizmos.DrawLine(from: transform.position, to: path[i]);
                 }
                 else {
-                    Gizmos.DrawLine(path[i-1], path[i]);
+                    Gizmos.DrawLine(from: path[i-1], to: path[i]);
                 }
             }
         }
