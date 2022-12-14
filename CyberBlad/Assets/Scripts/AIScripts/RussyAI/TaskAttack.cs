@@ -12,8 +12,7 @@ using UnityEngine;
 
 using BehaviorTree;
 
-public class TaskAttack : Node
-{
+public class TaskAttack : Node {
     private Animator _animator;
 
     private Transform _lastTarget;
