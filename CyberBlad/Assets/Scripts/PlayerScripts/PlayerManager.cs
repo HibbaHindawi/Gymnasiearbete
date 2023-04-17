@@ -35,7 +35,7 @@ public class PlayerManager : MonoBehaviour
 
     private void _Die() {
         Camera.main.transform.parent = null;
-        Destroy(obj: gameObject);
+        
         Gameover.SetActive(true);
     }
 }

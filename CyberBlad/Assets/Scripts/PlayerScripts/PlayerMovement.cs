@@ -221,7 +221,6 @@ public class PlayerMovement : MonoBehaviour
                 //camCon.Punch(new Vector2(0, -3f));
             }
             //StartCoroutine(bHopCoroutine(bhopLeniency));
-            gameObject.SendMessage("OnStartWalking");
             mode = Mode.Walking;
         }
     }
@@ -248,7 +247,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (VectorToGround().magnitude > 0.2f && CanRunOnThisWall(bannedGroundNormal) && wallStickTimer == 0f)
             {
-                gameObject.SendMessage("OnStartWallrunning");
                 wrTimer = wallRunTime;
                 canDJump = true;
                 mode = Mode.Wallruning;
@@ -268,7 +266,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jump && canJump)
         {
-            gameObject.SendMessage("OnJump");
             Jump();
         }
         else
@@ -302,7 +299,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jump && !crouched)
         {
-            gameObject.SendMessage("OnDoubleJump");
             DoubleJump(wishDir);
         }
 
