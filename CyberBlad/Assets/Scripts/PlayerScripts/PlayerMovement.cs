@@ -68,13 +68,13 @@ public class PlayerMovement : MonoBehaviour
         col = GetComponent<CapsuleCollider>();
     }
 
-    void OnGUI()
+    public void OnGUI()
     {
         GUILayout.Label("Speed: " + new Vector3(rb.velocity.x, 0, rb.velocity.z).magnitude);
         GUILayout.Label("SpeedUp: " + rb.velocity.y);
     }
 
-    void Update()
+    public void Update()
     {
         col.material.dynamicFriction = 0f;
         dir = Direction();
