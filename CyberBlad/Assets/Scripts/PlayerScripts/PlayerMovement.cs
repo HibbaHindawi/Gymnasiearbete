@@ -42,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
     public bool jump;
     public bool crouched;
     public bool grounded;
-
+    public bool Wallruning;
     Collider ground;
 
     Vector3 groundNormal = Vector3.up;
@@ -241,7 +241,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void EnterWallrun()
+   public void EnterWallrun()
     {
         if (mode != Mode.Wallruning)
         {
@@ -383,7 +383,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void DoubleJump(Vector3 wishDir)
+    public void DoubleJump(Vector3 wishDir)
     {
         if (canDJump)
         {
@@ -445,7 +445,7 @@ public class PlayerMovement : MonoBehaviour
         return vect;
     }
 
-    float WallrunCameraAngle()
+    public float WallrunCameraAngle()
     {
         Vector3 rotDir = Vector3.ProjectOnPlane(groundNormal, Vector3.up);
         Quaternion rotation = Quaternion.AngleAxis(-90f, Vector3.up);
