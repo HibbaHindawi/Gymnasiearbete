@@ -21,11 +21,11 @@ public class CheckEnemyInFOVRange : Node {
     private static int _enemyLayerMask = 1 << 6;
 
     private Transform _transform;
-    // private Animator _animator; Use later when we get animations
+
+    
 
     public CheckEnemyInFOVRange(Transform transform) {
         _transform = transform;
-        // _animator = transform.GetComponent<Animator>(); Use later when we get animations
     }
 
     public override NodeState Evaluate() {

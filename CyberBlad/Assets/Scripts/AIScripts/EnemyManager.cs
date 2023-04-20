@@ -20,6 +20,12 @@ public class EnemyManager : MonoBehaviour {
         _healthpoints = 30;
     }
 
+    private void OnCollisionEnter(Collision projectile) {
+        if (projectile.gameObject.tag == "Projectile") {
+            TakeHit();
+        }
+    }
+
     public bool TakeHit() {
         _healthpoints -= 10;
         bool isDead = _healthpoints <= 0;

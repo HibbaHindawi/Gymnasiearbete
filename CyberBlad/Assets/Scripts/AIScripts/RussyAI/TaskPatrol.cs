@@ -20,7 +20,7 @@ using UnityEngine.AI;
 
 public class TaskPatrol : Node {
     private Transform _transform;
-    // private Animator _animator; Add once we get animations
+
     private Transform[] _waypoints;
     NavMeshAgent agent;
 
@@ -36,7 +36,6 @@ public class TaskPatrol : Node {
     // constructor gatering additional info such as waypoints, but also a referance to the agents preforming this task
     public TaskPatrol(Transform transform, Transform[] waypoints) { 
         _transform = transform;
-       // _animator = transform.GetComponent<Animator>(); Add once we get animations
         _waypoints = waypoints;
     }
 
@@ -46,7 +45,6 @@ public class TaskPatrol : Node {
             _waitCounter += Time.deltaTime;
             if(_waitCounter < _waitTime) {
                 _waiting = false;
-                // _animator.SetBool(name: "Walking", value: true); Add once we get animations
             }
 
         } else {
@@ -59,7 +57,6 @@ public class TaskPatrol : Node {
                 _waiting = true;
 
                 _currentWaypointIndex = (_currentWaypointIndex + 1) % _waypoints.Length;
-                // _animator.SetBool(name: "Walking", value: false); Add once we get animations
 
             } else {
                 _transform.position = Vector3.MoveTowards(current: _transform.position, target: wp.position, maxDistanceDelta: RussyBT.speed * Time.deltaTime);

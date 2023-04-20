@@ -15,11 +15,9 @@ using BehaviorTree;
 public class CheckEnemyInAttackRange : Node
 {
     private Transform _transform;
-    // private Animator _animator;  Use one we get animations
 
     public CheckEnemyInAttackRange(Transform transform) {
         _transform = transform;
-        // _animator = transform.GetComponent<Animator>(); Use one we get animations
     }
 
     public override NodeState Evaluate() {
@@ -31,8 +29,6 @@ public class CheckEnemyInAttackRange : Node
 
         Transform target = (Transform)t;
         if (Vector3.Distance(a: _transform.position, b: target.position) <= RussyBT.attackRange) {
-            // _animator.SetBool("Attacking", true); Use one we get animations
-            // _animator.SetBool("Walking", false); Use one we get animations
 
             state = NodeState.SUCCESS;
             return state;

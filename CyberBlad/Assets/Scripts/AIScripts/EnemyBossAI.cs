@@ -1,3 +1,16 @@
+/* 
+    ==============================================
+    
+    This script was written by Kevin
+
+    Additioanl information:
+        A temporary script fot the "Main boss"
+        will most likely scrap or re-write this
+        script in the future.
+
+    ==============================================
+*/ 
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;

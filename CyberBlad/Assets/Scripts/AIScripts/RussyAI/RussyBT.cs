@@ -2,7 +2,7 @@
     ============================================================
 
     The general BT architecture was written by Kevin Johansson.
-    Info was gathered from: https://medium.com/geekculture/how-to-create-a-simple-behaviour-tree-in-unity-c-3964c84c060e
+    Info and heavy isperation was gathered from: https://medium.com/geekculture/how-to-create-a-simple-behaviour-tree-in-unity-c-3964c84c060e
 
     This script helps to implement the 
     generic Behavior Tree architecture 
@@ -25,7 +25,7 @@ public class RussyBT : Tree {
     
     public static float speed = 5f;
     public static float fovRange = 6f; 
-    public static float attackRange = 1f;
+    public static float attackRange = 10f;
 
     protected override Node SetupTree() {
 

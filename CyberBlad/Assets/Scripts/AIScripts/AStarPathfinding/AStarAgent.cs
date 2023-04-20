@@ -17,7 +17,7 @@ public class AStarAgent : MonoBehaviour {
     }
 
     void Update() {
-        if (Vector3.Distance(a: targetOldPosition, b: target.position) > 3) {
+        if (Vector3.Distance(a: targetOldPosition, b: target.position) > 1) {
             PathRequestManager.RequestPath(pathStart: transform.position, pathEnd: target.position, callback: OnPathFound);
             targetOldPosition = target.position;
         }

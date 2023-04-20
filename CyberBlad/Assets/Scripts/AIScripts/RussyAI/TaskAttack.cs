@@ -13,16 +13,16 @@ using UnityEngine;
 using BehaviorTree;
 
 public class TaskAttack : Node {
-    private Animator _animator;
-
     private Transform _lastTarget;
     private EnemyManager _enemyManager;
 
     private float _attackTime = 1f;
     private float _attackCounter = 0f;
 
+    public static float projectileSpeed = 20;
+
     public TaskAttack(Transform transform) {
-        _animator = transform.GetComponent<Animator>();
+        
     }
 
     public override NodeState Evaluate() {
@@ -39,10 +39,7 @@ public class TaskAttack : Node {
             bool enemyIsDead = _enemyManager.TakeHit();
             if (enemyIsDead) {
 
-                ClearData(key: "target");
-                _animator.SetBool(name: "Attacking", value: false);
-                _animator.SetBool(name: "Walking", value: true);
-
+                ClearData(key: "target"); 
             } else {
 
                 _attackCounter = 0f;
