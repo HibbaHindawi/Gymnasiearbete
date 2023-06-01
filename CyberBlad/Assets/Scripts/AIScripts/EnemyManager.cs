@@ -1,6 +1,6 @@
 /* 
     ==============================================
-    This script was written by Kevin
+    This script was written by Kevin and Jason
     ==============================================
 */ 
 

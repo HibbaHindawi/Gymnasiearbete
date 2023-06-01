@@ -1,7 +1,7 @@
 /*  
     ============================================================
 
-    The general BT architecture was written by Kevin Johansson.
+    The general BT architecture was written by Kevin Johansson and Jason Potgieter.
 
     ============================================================
 */

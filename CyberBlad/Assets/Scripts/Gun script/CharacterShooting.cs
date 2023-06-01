@@ -1,3 +1,9 @@
+/* 
+    ==============================================
+    This script was written by Kevin and Jason
+    ==============================================
+*/ 
+
 using UnityEngine;
 
 public class CharacterShooting : MonoBehaviour
