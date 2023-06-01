@@ -10,12 +10,12 @@ public class PointsScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        text = GameObject.Find("Points").GetComponent<TMP_Text>();
+        text = GameObject.Find("PointsText").GetComponent<TMP_Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        text.text = "Points: " + player.points;
+        text.text = "PointsText: " + player.points;
     }
 }

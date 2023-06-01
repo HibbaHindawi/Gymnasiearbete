@@ -9,44 +9,66 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using BehaviorTree;
 
-public class TaskAttack : Node {
-    private Transform _lastTarget;
-    private EnemyManager _enemyManager;
+public class TaskAttack : Node
+{
+    private Transform lastTarget;
+    private EnemyManager enemyManager;
 
-    private float _attackTime = 1f;
-    private float _attackCounter = 0f;
+    private float attackTime = 1f;
+    private float attackCounter = 0f;
 
     public static float projectileSpeed = 20;
 
-    public TaskAttack(Transform transform) {
-        
+    public TaskAttack(Transform transform)
+    {
+
     }
 
-    public override NodeState Evaluate() {
-
+    public override NodeState Evaluate()
+    {
         Transform target = (Transform)GetData(key: "target");
-        if (target != _lastTarget) {
-            _enemyManager = target.GetComponent<EnemyManager>();
-            _lastTarget = target;
+        if (target != lastTarget)
+        {
+            enemyManager = target.GetComponent<EnemyManager>();
+
+            // Unsubscribe from previous enemy events
+            if (lastTarget != null)
+            {
+                enemyManager.OnEnemyHit -= HandleEnemyHit;
+                enemyManager.OnEnemyDeath -= HandleEnemyDeath;
+            }
+
+            // Subscribe to new enemy events
+            enemyManager.OnEnemyHit += HandleEnemyHit;
+            enemyManager.OnEnemyDeath += HandleEnemyDeath;
+
+            lastTarget = target;
         }
 
-        _attackCounter += Time.deltaTime;
-        if (_attackCounter >= _attackTime) {
+        attackCounter += Time.deltaTime;
+        if (attackCounter >= attackTime)
+        {
+            enemyManager.TakeHit();
 
-            bool enemyIsDead = _enemyManager.TakeHit();
-            if (enemyIsDead) {
-
-                ClearData(key: "target"); 
-            } else {
-
-                _attackCounter = 0f;
-            }
+            attackCounter = 0f;
         }
 
         state = NodeState.RUNNING;
         return state;
+    }
+
+    private void HandleEnemyHit()
+    {
+        // Perform actions when enemy is hit
+        Debug.Log("Enemy Hit!");
+    }
+
+    private void HandleEnemyDeath()
+    {
+        // Perform actions when enemy dies
+        Debug.Log("Enemy Died!");
+        ClearData(key: "target");
     }
 }
