@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 5f10aadca6507c747ab493fa4e23de06
+  - enabled: 1
+    path: Assets/Scenes/destroyed_city.unity
+    guid: dab52a771d551ca40930496e8e13757a
   m_configObjects: {}

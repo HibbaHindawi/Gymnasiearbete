@@ -5,6 +5,8 @@ using TMPro;
 //skriven av Hibba och med hjälp av Johannes
 public class PlayerManager : MonoBehaviour
 {
+    public int points = 0;
+
     public int maxHealth = 100;
     public int _healthpoints;
     public TMP_Text text;
@@ -19,9 +21,12 @@ public class PlayerManager : MonoBehaviour
         
     }
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.H)){ //Change this to when the player gets hit by the bullet
             TakeHit();
         }    
+        if(Input.GetKeyDown(KeyCode.P)){ //Move this to when the enemies dies, you can also add a Destroy.OtherGameobject here but this is to give points to the player when they get a kill
+            points++;
+        }
     }
 
     public bool TakeHit() {

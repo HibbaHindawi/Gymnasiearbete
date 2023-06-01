@@ -19,7 +19,5 @@ public class Playerhealth : MonoBehaviour
     }
     public void SetHealth( int health){
         slider.value = health;
-        if(health < 75) img.color = Color.yellow;
-        if( health < 50) img.color = Color.red;
     }
 }
