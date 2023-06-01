@@ -80,8 +80,8 @@ public class Gun : MonoBehaviour
                     EnemyManager enemyManager = hit.transform.GetComponent<EnemyManager>();
                     if (enemyManager != null)
                     {
-                        bool enemyIsDead = enemyManager.TakeHit();
-                        if (enemyIsDead)
+                        //bool enemyIsDead = enemyManager.TakeHit();
+                        //if (enemyIsDead)
                         {
                             // Enemy is dead, handle accordingly
                             // For example, you can destroy the enemy or give points to the player

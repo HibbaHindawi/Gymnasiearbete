@@ -1,7 +1,9 @@
 /*  
     ============================================================
 
-    The general BT architecture was written by Kevin Johansson and Jason Potgieter.
+    The general BT architecture was written by Kevin Johansson
+    - Jason Potgieter helped with adding projectiles for the 
+      enemies.
 
     ============================================================
 */
