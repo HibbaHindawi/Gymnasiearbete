@@ -20,27 +20,31 @@
 
 using System.Collections.Generic;
 using BehaviorTree;
-public class RussyBT : Tree {
+
+public class RussyBT : Tree
+{
     public UnityEngine.Transform[] waypoints;
-    
+
     public static float speed = 5f;
-    public static float fovRange = 6f; 
+    public static float fovRange = 6f;
     public static float attackRange = 10f;
 
-    protected override Node SetupTree() {
+    protected override Node SetupTree()
+    {
+        AStarAgent aStarAgent = GetComponent<AStarAgent>();
+        TaskPatrol taskPatrol = new TaskPatrol(transform, waypoints, aStarAgent);
+        TaskGoToTarget taskGoToTarget = new TaskGoToTarget(transform, aStarAgent);
 
-        // The root of our tree
-        Node root = new Selector(children: new List<Node> {
-
-            new Sequence(children: new List<Node> {
-                new CheckEnemyInAttackRange(transform: transform),
-                new TaskAttack(transform: transform),
+        Node root = new Selector(new List<Node> {
+            new Sequence(new List<Node> {
+                new CheckEnemyInAttackRange(transform),
+                new TaskAttack(transform),
             }),
-            new Sequence(children: new List<Node> {
-                new CheckEnemyInFOVRange(transform: transform),
-                new TaskGoToTarget(transform: transform),
+            new Sequence(new List<Node> {
+                new CheckEnemyInFOVRange(transform),
+                taskGoToTarget,
             }),
-            new TaskPatrol(transform: transform, waypoints: waypoints),
+            taskPatrol,
         });
 
         return root;

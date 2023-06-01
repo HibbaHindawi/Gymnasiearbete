@@ -9,23 +9,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using BehaviorTree;
 
-public class TaskGoToTarget : Node {
+public class TaskGoToTarget : Node
+{
     private Transform _transform;
-    private float destination;
+    private AStarAgent _aStarAgent;
 
-    public TaskGoToTarget(Transform transform) {
+    public TaskGoToTarget(Transform transform, AStarAgent aStarAgent)
+    {
         _transform = transform;
+        _aStarAgent = aStarAgent;
     }
 
-    public override NodeState Evaluate() {
+    public override NodeState Evaluate()
+    {
         Transform target = (Transform)GetData(key: "target");
 
-        if (Vector3.Distance(a: _transform.position, b: target.position) >0.01f) {
-            _transform.position = Vector3.MoveTowards(current: _transform.position, target: target.position, maxDistanceDelta: RussyBT.speed * Time.deltaTime);
-            _transform.LookAt(worldPosition: target.position);
+        if (_aStarAgent != null)
+        {
+            _aStarAgent.SetTarget(target);
         }
 
         state = NodeState.RUNNING;

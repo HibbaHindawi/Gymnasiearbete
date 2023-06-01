@@ -44,20 +44,36 @@ public class AStarGrid : MonoBehaviour {
     public List<AStarNode> GetNeighbours(AStarNode node) {
         List<AStarNode> neighbours = new List<AStarNode>();
 
-        for (int x = -1; x <= 1; x++) 
+        for (int x = -1; x <= 1; x++) {
             for (int y = -1; y <= 1; y++) {
-                if (x == 0 && y == 0) 
+                if (x == 0 && y == 0) {
                     continue;
+                }
 
                 int checkX = node.gridX + x;
                 int checkY = node.gridY + y;
 
-                if (checkX >= 0 && checkX < gridSizeX && checkY  >= 0 && checkY < gridSizeY) {
-                    neighbours.Add(item: grid[checkX,checkY]);
+                if (checkX >= 0 && checkX < gridSizeX && checkY >= 0 && checkY < gridSizeY) {
+                    AStarNode neighbour = grid[checkX, checkY];
+                    if (neighbour.isWalkable && !IsNodeOccupiedByOtherAgent(neighbour)) {
+                        neighbours.Add(neighbour);
+                    }
                 }
             }
+        }
 
         return neighbours;
+    }
+
+    bool IsNodeOccupiedByOtherAgent(AStarNode node) {
+        // Check if any other agent's position matches the given node's position
+        AStarAgent[] agents = FindObjectsOfType<AStarAgent>();
+        foreach (AStarAgent agent in agents) {
+            if (agent != this && agent.transform.position == node.nodeWorldPosition) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public AStarNode NodeFromWorldPoint(Vector3 nodeWorldPosition) {                                // Finds a specific node, say the one the player is standing on
